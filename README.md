@@ -84,4 +84,11 @@ Follow: [Multicopter-phone-ROS](https://raw.githubusercontent.com/AdamPoloha/Mul
   "Device Orientation Debug", [empty]
   "Rotation preindication", [Empty -> 16 Values, 1 Active] (No clue what they mean)
 
-Gravity Sensor is stable enough that is may be completely usable, Linear Acceleration Sensor is chaotic despite this.
+"Gravity Sensor" is stable enough that is may be completely usable, "Linear Acceleration Sensor" is chaotic despite this.
+
+I will use "Orientation Sensor", "LSM6DSR Accelerometer", and "Gravity Sensor".
+
+# GPS
+If you use termux-location and you get the following error:
+  "error": "Please grant the following permission to use this command: android.permission.ACCESS_FINE_LOCATION"
+Open app management, Termux:API, and then enable all permissions or just location.
