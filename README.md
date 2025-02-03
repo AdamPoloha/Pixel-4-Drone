@@ -43,3 +43,45 @@ Inside Ubuntu terminal session:
   exit
 On every start:
   ./startxvnc.sh
+
+# Sensors
+Follow: [Multicopter-phone-ROS](https://raw.githubusercontent.com/AdamPoloha/Multicopter-phone-ROS/refs/heads/main/README.md)
+  "LSM6DSR Accelerometer", [X,Y,Z] (m/s^2)
+  "LIS2MDL Magnetometer", [X,Y,Z] (untested units)
+  "LSM6DSR Gyroscope", [X,Y,Z] (Probably radians/s)
+  "TMD3702V Ambient Light Sensor",
+  "BMP380 Pressure Sensor", [1 Value] (millibars)
+  "TMD3702V Proximity Sensor (wake-up)",
+  "LIS2MDL Magnetometer-Uncalibrated", [6 Values, 3 Active, X,Y,Z]
+  "LSM6DSR Gyroscope-Uncalibrated", [6 Values, X,Y,Z, and 3 random]
+  "LSM6DSR Accelerometer-Uncalibrated", [6 Values, X,Y,Z, and 3 constants]
+  "MAX11261 Edge-Detect Sensor",
+  "LSM6DSR Temperature",
+  "BMP380 Temperature",
+  "LIS2MDL Temperature",
+  "camera v-sync 0",
+  "camera v-sync 1",
+  "camera v-sync 2",
+  "TMD3702V Color Sensor",
+  "VD6282 Rear Light",
+  "Combo Light",
+  "Binned Brightness",
+  "Device Pickup Sensor",
+  "Proximity Gated Single Tap Gesture",
+  "Double Twist", [empty]
+  "Front Camera Light",
+  "Game Rotation Vector Sensor", [X,Y,Z,W] (Should be Gyro Integrated Quaternion)
+  "Geomagnetic Rotation Vector Sensor", [5 Values, X,Y,Z,W,unknown] (Magnetometer/Compass Quaternion)
+  "Gravity Sensor", [X,Y,Z] (Gravity extracted from Accelerometer)
+  "Linear Acceleration Sensor", [X,Y,Z] (Gravity removed from Accelerometer)
+  "Orientation Sensor", [Y,P,R] (Degrees, should have some sensor fusion)
+  "Rotation Vector Sensor", -> "Game Rotation Vector Sensor"
+  "Significant Motion",
+  "Step Counter",
+  "Step Detector",
+  "Tilt Sensor", [1 value]
+  "Device Orientation", [1 value]
+  "Device Orientation Debug", [empty]
+  "Rotation preindication", [Empty -> 16 Values, 1 Active] (No clue what they mean)
+
+Gravity Sensor is stable enough that is may be completely usable, Linear Acceleration Sensor is chaotic despite this.
