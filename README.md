@@ -85,6 +85,8 @@ Follow: [Multicopter-phone-ROS](https://raw.githubusercontent.com/AdamPoloha/Mul
   "Rotation preindication", [Empty -> 16 Values, 1 Active] (No clue what they mean)
 
 "Gravity Sensor" is stable enough that is may be completely usable, "Linear Acceleration Sensor" is chaotic despite this.
+"Orientation Sensor" has weird behaviour where pitch can have a max of 180 degrees, and roll 90. Roll 90 turns into 180 on the pitch. Read about it straight from the perpetrators: https://source.android.com/docs/core/interaction/sensors/sensor-types#orientation_deprecated
+
 
 I will use "Orientation Sensor", "LSM6DSR Accelerometer", and "Gravity Sensor".
 
