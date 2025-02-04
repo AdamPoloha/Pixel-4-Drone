@@ -44,6 +44,28 @@ Inside Ubuntu terminal session:
 On every start:
   ./startxvnc.sh
 
+# Sub Package
+Follow: [Creating a ROS Package](https://wiki.ros.org/ROS/Tutorials/CreatingPackage)
+  mkdir ~/ros_ws
+  mkdir ~/ros_ws/src
+  cd ~/ros_ws/src
+  catkin_create_pkg pixel4sub std_msgs rospy
+  cd ~/ros_ws
+  catkin_make
+  echo "source /root/ros_ws/devel/setup.bash" >> ~/.bashrc
+  source ~/.bashrc
+  mkdir ~/ros_ws/src/pixel4sub/scripts
+  cd ~/ros_ws/src/pixel4sub/scripts
+  wget https://raw.githubusercontent.com/AdamPoloha/Multicopter-phone-ROS/refs/heads/main/phone_sensor_publisher_node.py
+  chmod +x phone_sensor_publisher_node.py
+  cd ~/ros_ws
+  catkin_make
+  python2 -m pip install pysocket
+One Terminal:
+  roscore
+Second:
+  rosrun pixel4sub phone_sensor_publisher_node
+
 # Sensors
 Follow: [Multicopter-phone-ROS](https://raw.githubusercontent.com/AdamPoloha/Multicopter-phone-ROS/refs/heads/main/README.md)
   "LSM6DSR Accelerometer", [X,Y,Z] (m/s^2)
@@ -87,8 +109,9 @@ Follow: [Multicopter-phone-ROS](https://raw.githubusercontent.com/AdamPoloha/Mul
 "Gravity Sensor" is stable enough that is may be completely usable, "Linear Acceleration Sensor" is chaotic despite this.
 "Orientation Sensor" has weird behaviour where pitch can have a max of 180 degrees, and roll 90. Roll 90 turns into 180 on the pitch. Read about it straight from the perpetrators: https://source.android.com/docs/core/interaction/sensors/sensor-types#orientation_deprecated
 
-
-I will use "Orientation Sensor", "LSM6DSR Accelerometer", and "Gravity Sensor".
+I will use "Game Rotation Vector Sensor","Geomagnetic Rotation Vector Sensor","LSM6DSR Gyroscope","LSM6DSR Accelerometer","LIS2MDL Magnetometer" and "Gravity Sensor".
+Mine: termux-sensor -s "Game Rotation Vector Sensor","Geomagnetic Rotation Vector Sensor","LSM6DSR Gyroscope","LSM6DSR Accelerometer","LIS2MDL Magnetometer","Gravity Sensor" -d 1 | nc 127.0.0.1 1234
+Message Order: Acc, Mag, Gyro, Game, Geo, Grav
 
 # GPS
 If you use termux-location and you get the following error:
