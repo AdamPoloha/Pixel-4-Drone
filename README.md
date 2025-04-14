@@ -9,6 +9,7 @@ In fastboot:
 
 # Network
 Can set USB tethering as the default USB configuration and it works, make sure to disable device/screen lock so that it does not have to wait for unlock to enable.
+Remember to turn on "Disable adb authorisation timout" in Developer options if you want to use adb without touching the phone, making sure adb does not revoke your debugger device after 7 days.
 MAC address changes on every boot for phone, and then IP for both devices.
 Pixel4IPFinder.sh will be able to check adb for the phone's IP and find the PC's IP based on that, then it will give the command for SSH.
 
