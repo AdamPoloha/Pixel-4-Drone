@@ -19,23 +19,6 @@ Username: u0_a235
 Password: sub
 ssh u0_a235@192.168.103.238 -p 8022
 
-# Ubuntu, ROS, CasADi
-Follow: [Android-ROS-Melodic-and-Casadi](https://raw.githubusercontent.com/AdamPoloha/Android-ROS-Melodic-and-Casadi/refs/heads/main/README.md)
-Older Ubuntu: apt-get autoremove --purge snapd
-
-# CasADi Speed Test
-mkdir ./casaditest
-cd ./casaditest
-wget https://raw.githubusercontent.com/AdamPoloha/Pixel-4-Drone/refs/heads/main/CasADi/mpc_code.py
-python2 ./mpc_code.py
-Results:
-  ('Total time: ', 9.567008972167969) normal
-  ('Total time: ', 6.1133880615234375) performance governor
-  ('Total time: ', 5.061182022094727) all-core max frequency
-  ('Total time: ', 4.859670877456665)
-  Average no IPOPT verbose: 5s
-Average Result for i7 9700: 4.93s
-
 # XVNC
 Inside Ubuntu terminal session:
   apt install xvfb x11vnc
@@ -44,28 +27,6 @@ Inside Ubuntu terminal session:
   exit
 On every start:
   ./startxvnc.sh
-
-# Sub Package
-Follow: [Creating a ROS Package](https://wiki.ros.org/ROS/Tutorials/CreatingPackage)
-  mkdir ~/ros_ws
-  mkdir ~/ros_ws/src
-  cd ~/ros_ws/src
-  catkin_create_pkg pixel4sub std_msgs rospy
-  cd ~/ros_ws
-  catkin_make
-  echo "source /root/ros_ws/devel/setup.bash" >> ~/.bashrc
-  source ~/.bashrc
-  mkdir ~/ros_ws/src/pixel4sub/scripts
-  cd ~/ros_ws/src/pixel4sub/scripts
-  wget https://raw.githubusercontent.com/AdamPoloha/Multicopter-phone-ROS/refs/heads/main/phone_sensor_publisher_node.py
-  chmod +x phone_sensor_publisher_node.py
-  cd ~/ros_ws
-  catkin_make
-  python2 -m pip install pysocket
-One Terminal:
-  roscore
-Second:
-  rosrun pixel4sub phone_sensor_publisher_node
 
 # Sensors
 Follow: [Multicopter-phone-ROS](https://raw.githubusercontent.com/AdamPoloha/Multicopter-phone-ROS/refs/heads/main/README.md)
@@ -113,6 +74,25 @@ Follow: [Multicopter-phone-ROS](https://raw.githubusercontent.com/AdamPoloha/Mul
 I will use "Game Rotation Vector Sensor","Geomagnetic Rotation Vector Sensor","LSM6DSR Gyroscope","LSM6DSR Accelerometer","LIS2MDL Magnetometer" and "Gravity Sensor".
 Mine: termux-sensor -s "Game Rotation Vector Sensor","Geomagnetic Rotation Vector Sensor","LSM6DSR Gyroscope","LSM6DSR Accelerometer","LIS2MDL Magnetometer","Gravity Sensor" -d 1 | nc 127.0.0.1 1234
 Message Order: Acc, Mag, Gyro, Game, Geo, Grav
+
+# Drone Package
+Make Package (https://docs.ros.org/en/eloquent/Tutorials/Creating-Your-First-ROS2-Package.html)
+Ubuntu Terminal:
+  mkdir ~/ros2_ws
+  mkdir ~/ros2_ws/src
+  cd ~/ros2_ws/src
+  ros2 pkg create --build-type ament_python --node-name hello_node phone_drone
+  cd ~/ros2_ws
+  colcon build
+  . install/setup.bash
+  ros2 run phone_drone hello_node
+Ubuntu Terminal:
+  cd ~/ros2_ws/src/phone_drone/phone_drone
+  wget https://raw.githubusercontent.com/AdamPoloha/Multicopter-phone-ROS/refs/heads/main/phone_sensor_publisher_node.py
+  apt install geany
+  geany ../setup.py
+  Add new entry point to console_scripts
+'phone_sensor_publisher_node = phone_drone.phone_sensor_publisher_node.py'
 
 # GPS
 If you use termux-location and you get the following error:
