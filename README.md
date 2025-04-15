@@ -14,10 +14,14 @@ MAC address changes on every boot for phone, and then IP for both devices.
 Pixel4IPFinder.sh will be able to check adb for the phone's IP and find the PC's IP based on that, then it will give the command for SSH.
 
 # Termux and SSH
-Follow: [Multicopter-phone-ROS](https://raw.githubusercontent.com/AdamPoloha/Multicopter-phone-ROS/refs/heads/main/README.md)
+Follow: [Multicopter-phone-ROS](https://github.com/AdamPoloha/Multicopter-phone-ROS/blob/main/README.md?plain=1)
 Username: u0_a235
 Password: sub
 ssh u0_a235@192.168.103.238 -p 8022
+
+# Ubuntu, ROS, CasADi
+Follow: [Android-ROS-Melodic-and-Casadi](https://github.com/AdamPoloha/Android-ROS-Melodic-and-Casadi/blob/main/README.md?plain=1) and [Termux Desktops](https://github.com/LinuxDroidMaster/Termux-Desktops/blob/main/Documentation/chroot/ubuntu_chroot.md)
+sudo curl https://cdimage.ubuntu.com/ubuntu-base/releases/22.04.5/release/ubuntu-base-22.04.5-base-amd64.tar.gz --output ubuntu.tar.gz
 
 # XVNC
 Inside Ubuntu terminal session:
@@ -29,7 +33,7 @@ On every start:
   ./startxvnc.sh
 
 # Sensors
-Follow: [Multicopter-phone-ROS](https://raw.githubusercontent.com/AdamPoloha/Multicopter-phone-ROS/refs/heads/main/README.md)
+Follow: [Multicopter-phone-ROS](https://github.com/AdamPoloha/Multicopter-phone-ROS/blob/main/README.md?plain=1)
   "LSM6DSR Accelerometer", [X,Y,Z] (m/s^2)
   "LIS2MDL Magnetometer", [X,Y,Z] (untested units)
   "LSM6DSR Gyroscope", [X,Y,Z] (Probably radians/s)
