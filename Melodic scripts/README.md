@@ -1,3 +1,20 @@
+# Ubuntu, ROS, CasADi
+Follow: [Android-ROS-Melodic-and-Casadi](https://raw.githubusercontent.com/AdamPoloha/Android-ROS-Melodic-and-Casadi/refs/heads/main/README.md)
+Older Ubuntu: apt-get autoremove --purge snapd
+
+# CasADi Speed Test
+mkdir ./casaditest
+cd ./casaditest
+wget https://raw.githubusercontent.com/AdamPoloha/Pixel-4-Drone/refs/heads/main/CasADi/mpc_code.py
+python2 ./mpc_code.py
+Results:
+  ('Total time: ', 9.567008972167969) normal
+  ('Total time: ', 6.1133880615234375) performance governor
+  ('Total time: ', 5.061182022094727) all-core max frequency
+  ('Total time: ', 4.859670877456665)
+  Average no IPOPT verbose: 5s
+Average Result for i7 9700: 4.93s
+
 # Sub Package ROS Melodic
 Follow: [Creating a ROS Package](https://wiki.ros.org/ROS/Tutorials/CreatingPackage)
   mkdir ~/ros_ws
