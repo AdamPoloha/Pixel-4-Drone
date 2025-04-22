@@ -19,14 +19,17 @@ Username: u0_a235
 Password: sub
 ssh u0_a235@192.168.103.238 -p 8022
 
-# Ubuntu, ROS, CasADi
+# Ubuntu
 Follow: [Android-ROS-Melodic-and-Casadi](https://github.com/AdamPoloha/Android-ROS-Melodic-and-Casadi/blob/main/README.md?plain=1) and [Termux Desktops](https://github.com/LinuxDroidMaster/Termux-Desktops/blob/main/Documentation/chroot/ubuntu_chroot.md)
-sudo curl https://cdimage.ubuntu.com/ubuntu-base/releases/22.04.5/release/ubuntu-base-22.04.5-base-amd64.tar.gz --output ubuntu.tar.gz
-su
-tar xpvf ubuntu.tar.gz --numeric-owner
-mkdir sdcard
-mkdir dev/shm
-exit
+  sudo curl https://cdimage.ubuntu.com/ubuntu-base/releases/22.04.5/release/ubuntu-base-22.04.5-base-amd64.tar.gz --output ubuntu.tar.gz
+  su
+  tar xpvf ubuntu.tar.gz --numeric-owner
+  mkdir sdcard
+  mkdir dev/shm
+  exit
+
+# ROS2 Humble
+Follow: [Multicopter-phone-ROS](https://github.com/AdamPoloha/Multicopter-phone-ROS/blob/main/README.md?plain=1) and [Humble on Ubuntu]https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
 
 # XVNC
 Inside Ubuntu terminal session:
@@ -34,8 +37,24 @@ Inside Ubuntu terminal session:
   wget https://raw.githubusercontent.com/AdamPoloha/Multicopter-phone-ROS/refs/heads/main/startxvnc.sh
   chmod +x ./startxvnc.sh
   exit
-On every start:
+Inside Termux session:
+  cd /data/local/tmp
+  sudo cp ./start.sh ./Ubuntuxvnc.sh
+  sudo nano ./Ubuntuxvnc.sh
+  Modify [busybox chroot $UBUNTUPATH /bin/su root] to [busybox chroot $UBUNTUPATH /bin/su root -c '/root/startxvnc.sh']
+  Save and exit
+Starting from Ubuntu:
   ./startxvnc.sh
+Starting from Termux (can have issues with XFCE startup):
+  cd /data/local/tmp
+  su
+  ./Ubuntuxvnc.sh
+
+# Firefox and VLC
+Follow: [Multicopter-phone-ROS](https://github.com/AdamPoloha/Multicopter-phone-ROS/blob/main/README.md?plain=1) and [Humble on Ubuntu]https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
+  apt install vlc
+Follow: [VLC with root](https://unix.stackexchange.com/questions/125546/how-to-run-vlc-player-in-root)
+  sed -i 's/geteuid/getppid/' /usr/bin/vlc
 
 # Sensors
 Follow: [Multicopter-phone-ROS](https://github.com/AdamPoloha/Multicopter-phone-ROS/blob/main/README.md?plain=1)
