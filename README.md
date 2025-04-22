@@ -22,6 +22,11 @@ ssh u0_a235@192.168.103.238 -p 8022
 # Ubuntu, ROS, CasADi
 Follow: [Android-ROS-Melodic-and-Casadi](https://github.com/AdamPoloha/Android-ROS-Melodic-and-Casadi/blob/main/README.md?plain=1) and [Termux Desktops](https://github.com/LinuxDroidMaster/Termux-Desktops/blob/main/Documentation/chroot/ubuntu_chroot.md)
 sudo curl https://cdimage.ubuntu.com/ubuntu-base/releases/22.04.5/release/ubuntu-base-22.04.5-base-amd64.tar.gz --output ubuntu.tar.gz
+su
+tar xpvf ubuntu.tar.gz --numeric-owner
+mkdir sdcard
+mkdir dev/shm
+exit
 
 # XVNC
 Inside Ubuntu terminal session:
