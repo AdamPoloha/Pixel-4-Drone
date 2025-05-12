@@ -129,6 +129,11 @@ In another terminal:
   apt install ros-humble-imu-tools
   rviz2 rviz2
 
+# Hardware Acceleration
+Follow: [Termux-Desktops](https://github.com/LinuxDroidMaster/Termux-Desktops/blob/main/Documentation/HardwareAcceleration.md)
+[mesa-vulkan-kgsl_23.3.0-devel-20230905_arm64.deb](https://drive.google.com/file/d/1f4pLvjDFcBPhViXGIFoRE3Xc8HWoiqG-/view?usp=drive_link) works with Ubuntu 22.04
+If you want to compile, play with: [Mesa Turnip Build](https://github.com/xDoge26/mesa-turnip) and [Edited Build - no armhf](https://github.com/AdamPoloha/Pixel-4-Drone/blob/main/Humble%20scripts/turnip/build_deb_mesa.sh)
+
 # GPS
 If you use termux-location and you get the following error:
   "error": "Please grant the following permission to use this command: android.permission.ACCESS_FINE_LOCATION"
