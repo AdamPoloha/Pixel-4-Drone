@@ -114,13 +114,20 @@ Ubuntu Terminal:
   colcon build
   . install/setup.bash
   ros2 run phone_drone hello_node
-Ubuntu Terminal:
+The node should run and print out "Hi from phone_drone."
   cd ~/ros2_ws/src/phone_drone/phone_drone
   wget https://raw.githubusercontent.com/AdamPoloha/Multicopter-phone-ROS/refs/heads/main/phone_sensor_publisher_node.py
   apt install geany
   geany ../setup.py
-  Add new entry point to console_scripts
-'phone_sensor_publisher_node = phone_drone.phone_sensor_publisher_node.py'
+Add new entry point to console_scripts:
+'phone_sensor_publisher_node = phone_drone.phone_sensor_publisher_node:main'
+  cd ~/ros2_ws
+  colcon build
+  . install/setup.bash
+  ros2 run phone_drone phone_sensor_publisher_node
+In another terminal:
+  apt install ros-humble-imu-tools
+  rviz2 rviz2
 
 # GPS
 If you use termux-location and you get the following error:
