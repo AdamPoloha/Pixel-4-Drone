@@ -116,7 +116,7 @@ Ubuntu Terminal:
   ros2 run phone_drone hello_node
 The node should run and print out "Hi from phone_drone."
   cd ~/ros2_ws/src/phone_drone/phone_drone
-  wget https://raw.githubusercontent.com/AdamPoloha/Multicopter-phone-ROS/refs/heads/main/phone_sensor_publisher_node.py
+  wget https://raw.githubusercontent.com/AdamPoloha/Pixel-4-Drone/refs/heads/main/Humble%20scripts/phone_sensor_publisher_node.py
   apt install geany
   geany ../setup.py
 Add new entry point to console_scripts:
