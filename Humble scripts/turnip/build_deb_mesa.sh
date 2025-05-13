@@ -65,7 +65,10 @@ endian = 'little'
 # Build mesa 
 cd ${MESA_PREFIX}
 
-meson build64/ --prefix /usr --libdir lib/aarch64-linux-gnu/ -D platforms=x11 -D gallium-drivers= -D vulkan-drivers=freedreno -D freedreno-kmds=kgsl -D buildtype=release -D glx=disabled -D egl=disabled -D gles1=disabled -D gles2=disabled -D gallium-xa=disabled -D opengl=false -D shared-glapi=disabled -D b_lto=true -D b_ndebug=true
+#meson build --prefix $PREFIX -Dlibdir=$PREFIX/lib -D platforms=x11 -Dgallium-drivers=freedreno -Dfreedreno-kmds=kgsl,msm -D vulkan-drivers= -D dri3=enabled -D egl=enabled -D gles2=disabled -D glvnd=disabled -D glx=dri -D libunwind=disabled -D shared-glapi=enabled -Dshared-llvm=disabled -D microsoft-clc=disabled -D valgrind=disabled -D gles1=disabled
+
+#meson build64/ --prefix /usr --libdir lib/aarch64-linux-gnu/ -D platforms=x11 -D gallium-drivers= -D vulkan-drivers=freedreno -D freedreno-kmds=kgsl -D buildtype=release -D glx=disabled -D egl=disabled -D gles1=disabled -D gles2=disabled -D gallium-xa=disabled -D opengl=false -D shared-glapi=disabled -D b_lto=true -D b_ndebug=true
+meson build64/ --prefix /usr --libdir lib/aarch64-linux-gnu/ -D platforms=x11 -D gallium-drivers=freedreno -D vulkan-drivers=freedreno -D freedreno-kmds=kgsl,msm -D buildtype=release -D dri3=enabled -D glx=dri -D egl=enabled -D gles1=enabled -D gles2=enabled -D gallium-xa=enabled -D opengl=enabled -D shared-glapi=enabled -D b_lto=true -D b_ndebug=true -D glvnd=enabled -D libunwind=enabled -Dshared-llvm=disabled -D microsoft-clc=disabled -D valgrind=disabled
 meson compile -C build64/
 meson install -C build64/ --destdir ${MESA_64}
 
