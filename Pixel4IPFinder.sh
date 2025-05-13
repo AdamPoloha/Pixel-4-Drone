@@ -26,7 +26,7 @@ while true;
 do
 	ips="$(adb shell ifconfig)"
 	#echo $ips
-	tmp=${ips#*rndis0}   # remove prefix ending in "192.168.42."
+	tmp=${ips#*addr:10.}
 	#echo $tmp
 	echo "Checking IP addresses"
 	if [ "$tmp" == "$ips" ]
@@ -38,20 +38,17 @@ do
 	fi
 done
 
-tmp=${tmp#*192.168.}
+tmp=10.$tmp
 tmp=${tmp//Bcast*}
 tmp="$(echo $tmp | xargs)"
-#echo $tmp
 
-net=$(echo $ip | cut -f3 -d.)
-#net=192.169.$net
-#echo $net
+net=$(echo $tmp | cut -f2 -d.).$(echo $tmp | cut -f3 -d.)
 
 while true;
 do
 	ips="$(hostname -I)"
 	#echo $ips
-	tmp2=${ips#*192.168.$net}
+	tmp2=${ips#* 10.$net}
 	#echo $tmp2
 	echo "Checking IP addresses"
 	if [ "$tmp" == "$ips" ]
@@ -63,9 +60,8 @@ do
 	fi
 done
 
-ip=192.168.$tmp
-echo "Phone IP on tether network is: "$ip
-ippc=192.168.$net$tmp2
+echo "Phone IP on tether network is: "$tmp
+ippc=10.$net$tmp2
 echo "My IP on phone network is: "$ippc
 
-echo "SSH by: ssh u0_a235@"$ip" -p 8022"
+echo "SSH by: ssh u0_a235@"$tmp" -p 8022"
